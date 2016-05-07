@@ -1,4 +1,14 @@
-一、创建版本库
+一、在Windows上安装Git
+	1>从https://git-for-windows.github.io下载（网速慢的同学请移步国内镜像），然后按默认选项安装即可。
+	2>安装完成后，在开始菜单里找到“Git”->“Git Bash”，蹦出一个类似命令行窗口的东西，就说明Git安装成功！
+	3>安装完成后，还需要最后一步设置，在命令行输入：
+		$ git config --global user.name "Your Name"
+		$ git config --global user.email "email@example.com"
+	4>因为Git是分布式版本控制系统，所以，每个机器都必须自报家门：你的名字和Email地址。
+	5>你也许会担心，如果有人故意冒充别人怎么办？这个不必担心，首先我们相信大家都是善良无知的群众，其次，真的有冒充的也是有办法可查的。
+	6>注意git config命令的--global参数，用了这个参数，表示你这台机器上所有的Git仓库都会使用这个配置，当然也可以对某个仓库指定不同的用户名和Email地址。
+	
+二、创建版本库
 	版本库又名仓库，英文名repository
 	创建一个版本库非常简单，
 	1>选择一个合适的地方，创建一个空目录：
@@ -13,7 +23,7 @@
 	细心的读者可以发现当前目录下多了一个.git的目录,这个目录是Git来跟踪管理版本库的，没事千万不要手动修改这个目录里面的文件，不然改乱了，就把Git仓库给破坏了。
 	如果你没有看到.git目录，那是因为这个目录默认是隐藏的，用ls -ah命令就可以看见。
 	
-二、把文件添加到版本库
+三、把文件添加到版本库
 	1>所有的版本控制系统，其实只能跟踪文本文件的改动，比如TXT文件，网页，所有的程序代码等等，Git也不例外。
 	2>不幸的是，Microsoft的Word格式是二进制格式，因此，版本控制系统是没法跟踪Word文件的改动的
 	3>强烈建议使用标准的UTF-8编码，所有语言使用同一种编码，既没有冲突，又被所有平台所支持。
@@ -22,3 +32,13 @@
 	6>添加文件到版本库的步骤：
 		1.用命令git add告诉Git，把文件添加到仓库：
 			$ git add readme.txt
+		2.用命令git commit告诉Git，把文件提交到仓库：
+			$ git commit -m "wrote a readme file"
+			[master (root-commit) cb926e7] wrote a readme file
+			1 file changed, 2 insertions(+)
+			create mode 100644 readme.txt
+			
+四、时光机穿梭
+	1>git status					命令可以让我们时刻掌握仓库当前的状态
+	2>git diff	文件名				顾名思义就是查看difference，能看看具体修改了什么内容。
+	3>ctrl + C						回到git环境
